@@ -35,7 +35,7 @@ public class Consumer {
     }
 
     private void writeToFile(Product product) {
-        // Write to file
+        // Emulates writing to file
 
         try {
             Thread.sleep(5000);
