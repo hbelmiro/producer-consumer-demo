@@ -1,8 +1,12 @@
 package com.hbelmiro.producerconsumerdemo;
 
 import java.util.concurrent.LinkedBlockingQueue;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Main {
+
+    private static final Logger LOGGER = Logger.getLogger(Main.class.getName());
 
     public static void main(String[] args) {
         LinkedBlockingQueue<Product> queue = new LinkedBlockingQueue<>();
@@ -21,6 +25,7 @@ public class Main {
             consumer.shutdownAfterQueueIsEmpty();
         } catch (Exception e) {
             consumer.shutdownNow();
+            LOGGER.log(Level.SEVERE, "Unexpected error. The consumer will be shutdown and no more products will be read from queue", e);
         }
     }
 
